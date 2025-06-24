@@ -52,3 +52,65 @@ CodeCoverage/
 *.VisualState.xml
 TestResult.xml
 nunit-*.xml
+
+## Build output
+bin/
+obj/
+out/
+
+## Rider
+.idea/
+
+## Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## ASP.NET secrets
+**/secrets.json
+**/appsettings.Development.json
+
+## Logs
+*.log
+
+## Resharper
+*.DotSettings.user
+
+## OS generated
+.DS_Store
+Thumbs.db
+
+## dotnet-specific
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+## Entity Framework Migrations (se quiser ignorar migrações locais)
+# **/Migrations/
+
+## Test results
+TestResults/
+*.coverage
+*.coveragexml
+*.trx
+
+## Others
+*.ncrunch*
+*.localhistory
+*.vspscc
+*.vssscc
+_ReSharper*/
+*.cache
+*.dbmdl
+*.bak
+*.sqlite
+*.mdf
+*.ldf
+*.pdb
+*.publishsettings
+
+## Optional: Rider/JetBrains workspace
+*.idea/
+*.sln.iml
