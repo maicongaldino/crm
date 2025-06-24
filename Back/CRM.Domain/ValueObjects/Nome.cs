@@ -1,8 +1,11 @@
 namespace CRM.Domain.ValueObjects;
 
-public class Nome(string valor)
+public class Nome
 {
-    private string Valor { get; } = valor;
+    public string Valor { get; }
+
+    private Nome(string valor)
+        => Valor = valor;
 
     public static Nome Criar(string valor)
     {

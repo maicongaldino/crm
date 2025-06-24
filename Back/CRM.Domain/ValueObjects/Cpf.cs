@@ -1,8 +1,11 @@
 namespace CRM.Domain.ValueObjects;
 
-public class Cpf(string valor)
+public class Cpf
 {
-    private string Valor { get; } = valor;
+    public string Valor { get; }
+
+    private Cpf(string valor)
+        => Valor = valor;
 
     public static Cpf Criar(string valor)
     {

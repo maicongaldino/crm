@@ -5,11 +5,11 @@ namespace CRM.Domain.Entities;
 
 public class Usuario
 {
-    private GuidId Id { get; set; }
-    private Nome Nome { get; set; }
-    private Email Email { get; set; }
-    private Cpf Cpf { get; set; }
-    private Senha Senha { get; set; }
+    public GuidId Id { get; init; }
+    public Nome Nome { get; init; }
+    public Email Email { get; init; }
+    public Cpf Cpf { get; init; }
+    public Senha Senha { get; init; }
 
     public Usuario(GuidId id, Nome nome, Email email, Cpf cpf, Senha senha)
     {
@@ -24,6 +24,11 @@ public class Usuario
         Email = email;
         Cpf = cpf;
         Senha = senha;
+    }
+
+    // Construtor protegido para o EF Core
+    protected Usuario()
+    {
     }
 
     public static Usuario Criar(IGuidGenerator guidGenerator, string nome, string email, string cpf, string senha)

@@ -1,8 +1,11 @@
 namespace CRM.Domain.ValueObjects;
 
-public class Senha(string valor)
+public class Senha
 {
-    private string Valor { get; } = valor;
+    public string Valor { get; }
+
+    private Senha(string valor)
+        => Valor = valor;
 
     public static Senha Criar(string valor)
     {
