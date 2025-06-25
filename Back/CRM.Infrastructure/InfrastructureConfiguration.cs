@@ -1,5 +1,6 @@
 using CRM.Domain.Interfaces;
 using CRM.Infrastructure.Data;
+using CRM.Infrastructure.Repositories;
 using CRM.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -15,5 +16,6 @@ public static class InfrastructureConfiguration
             options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
         services.AddScoped<IGuidGenerator, GuidGenerator>();
+        services.AddScoped<IUsuarioRepository, UsuarioRepository>();
     }
 }
