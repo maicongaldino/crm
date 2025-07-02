@@ -1,5 +1,6 @@
 using CRM.Domain.Entities;
 using CRM.Domain.Interfaces;
+using CRM.Domain.ValueObjects;
 using CRM.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,10 +15,10 @@ public class UsuarioRepository(CrmDbContext context) : IUsuarioRepository
         => await _dbSet.AddAsync(entity, ct);
 
     public async Task<IEnumerable<Usuario>> GetAllAsync(CancellationToken ct = default)
-        => await _dbSet.ToListAsync(ct);
+        => await _dbSet.AsNoTracking().ToListAsync(ct);
 
     public async Task<Usuario?> GetByIdAsync(Guid id, CancellationToken ct = default)
-        => await _dbSet.FindAsync([id, ct], cancellationToken: ct);
+        => await _dbSet.AsNoTracking().FirstOrDefaultAsync(u => u.Id == GuidId.Restaurar(id), cancellationToken: ct);
 
     public void Remove(Usuario entity, CancellationToken ct = default)
         => _dbSet.Remove(entity);

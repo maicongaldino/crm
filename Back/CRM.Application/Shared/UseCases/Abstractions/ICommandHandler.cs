@@ -1,6 +1,6 @@
 namespace CRM.Application.Shared.UseCases.Abstractions;
 
-public interface IHandler<in TCommand, TResponse>
+public interface ICommandHandler<in TCommand, TResponse>
     where TCommand : ICommand
     where TResponse : IResponse
 {

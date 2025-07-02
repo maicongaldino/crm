@@ -13,10 +13,11 @@ public class UsuarioConfiguration : IEntityTypeConfiguration<Usuario>
 
         builder.Property(u => u.Id)
             .HasConversion(
-                id => id.ToString(), // VO → string/Guid para salvar no banco
-                valor => GuidId.Restaurar(Guid.Parse(valor)) // string/Guid → VO
+                id => id.Valor, //GuidId → Guid
+                guid => GuidId.Restaurar(guid) // Guid → GuidId
             )
             .HasColumnName(nameof(Usuario.Id))
+            .HasColumnType("uniqueidentifier")
             .IsRequired();
 
         // Configura VO Nome
@@ -25,6 +26,7 @@ public class UsuarioConfiguration : IEntityTypeConfiguration<Usuario>
         {
             nome.Property(n => n.Valor)
                 .HasColumnName(nameof(Usuario.Nome))
+                .HasColumnType("varchar(255)")
                 .IsRequired();
         });
 
@@ -33,6 +35,7 @@ public class UsuarioConfiguration : IEntityTypeConfiguration<Usuario>
         {
             email.Property(e => e.Valor)
                 .HasColumnName(nameof(Usuario.Email))
+                .HasColumnType("varchar(320)") // max length RFC para emails
                 .IsRequired();
         });
 
@@ -42,6 +45,7 @@ public class UsuarioConfiguration : IEntityTypeConfiguration<Usuario>
         {
             cpf.Property(n => n.Valor)
                 .HasColumnName(nameof(Usuario.Cpf))
+                .HasColumnType("char(11)")
                 .IsRequired();
         });
 
@@ -51,6 +55,7 @@ public class UsuarioConfiguration : IEntityTypeConfiguration<Usuario>
         {
             senha.Property(n => n.Valor)
                 .HasColumnName(nameof(Usuario.Senha))
+                .HasColumnType("varchar(256)")
                 .IsRequired();
         });
     }
